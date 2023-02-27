@@ -1,34 +1,23 @@
-import React from 'react'
-import { SearchIcon } from '@chakra-ui/icons';
-import { IconButton, Input } from '@chakra-ui/react';
-import { useFormik } from 'formik';
+import React from 'react';
+import { Box, Input } from '@chakra-ui/react';
 
-interface Values {
-  search: string;
+interface Props {
+  values: string;
+  handleChange: (e: React.ChangeEvent<any>) => void;
 }
 
-const SearchInput: React.FC = () => {
-  const { handleSubmit, handleChange, values } = useFormik({
-    initialValues: {
-      search: '',
-    },
-    onSubmit: (values: Values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-
+const SearchInput: React.FC<Props> = ({ values, handleChange }) => {
   return (
-    <form onSubmit={handleSubmit}>
-        <Input
-          id="search"
-          name="search"
-          placeholder="Search"
-          value={values.search}
-          onChange={handleChange}
-        />
-        <IconButton type='submit' aria-label="Search database" icon={<SearchIcon />} />
-      </form>
-  )
-}
+    <Box padding={1}>
+      <Input
+        id="search"
+        name="search"
+        placeholder="Search"
+        value={values}
+        onChange={handleChange}
+      />
+    </Box>
+  );
+};
 
-export default SearchInput
+export default SearchInput;

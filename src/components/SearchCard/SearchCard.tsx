@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Center,
   Flex,
   RangeSlider,
@@ -10,12 +11,14 @@ import {
 import { useFormik } from 'formik';
 import React from 'react';
 import PriceInput from './Inputs/PriceInput';
+import RoomsSelect from './Inputs/RoomsSelect';
 import SearchInput from './Inputs/SearchInput';
 
 interface Values {
   search: string;
   minPrice: string;
   maxPrice: string;
+  rooms: string;
 }
 
 const SearchCard: React.FC = () => {
@@ -24,6 +27,7 @@ const SearchCard: React.FC = () => {
       search: '',
       minPrice: '',
       maxPrice: '',
+      rooms: '',
     },
     onSubmit: (values: Values) => {
       console.log(values);
@@ -35,42 +39,13 @@ const SearchCard: React.FC = () => {
     <div>
       <Center>
         <form onSubmit={handleSubmit}>
-          <Box padding={1}>
-            <label htmlFor="search">Search</label>
-            <input
-              id="search"
-              name="search"
-              type="text"
-              onChange={handleChange}
-              value={values.search}
-            />
-          </Box>
-          <Box></Box>
-          <Flex>
-            <Box padding={1} paddingRight={1}>
-              <label htmlFor="minPrice">Min</label>
-              <input
-                id="minPrice"
-                name="minPrice"
-                type="number"
-                placeholder="0"
-                onChange={handleChange}
-                value={values.minPrice}
-              />
-            </Box>
-            <Box padding={1}>
-              <label htmlFor="maxPrice">Max</label>
-              <input
-                id="maxPrice"
-                name="maxPrice"
-                type="number"
-                placeholder="5000+"
-                onChange={handleChange}
-                value={values.maxPrice}
-              />
-            </Box>
-          </Flex>
-          <button type="submit">Send</button>
+          <SearchInput values={values.search} handleChange={handleChange} />
+
+          <PriceInput values={values} handleChange={handleChange} />
+
+          <RoomsSelect handleChange={handleChange} />
+
+          <Button type="submit">Send</Button>
         </form>
       </Center>
     </div>

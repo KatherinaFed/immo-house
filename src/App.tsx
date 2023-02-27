@@ -1,9 +1,10 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 import React from 'react';
-import FlatCard from './components/Card/FlatCard';
+import FlatCard from './components/FlatCard/FlatCard';
 import SearchCard from './components/SearchCard/SearchCard';
 import { Header } from './components/Header/Header';
 import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
 
 const App: React.FC = () => {
   return (
@@ -22,15 +23,14 @@ const App: React.FC = () => {
         <GridItem pl="2" bg="orange.300" area={'header'}>
           Header
         </GridItem>
-        <GridItem pl="2" bg="green.300" area={'form'}>
+        <GridItem pl="2" area={'form'}>
           <SearchCard />
         </GridItem>
         <GridItem pl="2" bg="green.300" area={'main'}>
-          {/* Main */}
           <Main />
         </GridItem>
         <GridItem pl="2" bg="blue.300" area={'footer'}>
-          Footer
+          <Footer />
         </GridItem>
       </Grid>
     </>
